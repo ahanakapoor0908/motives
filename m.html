@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Motives</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
-        
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #ffeef2 0%, #fff5f8 50%, #fef0f4 100%);
@@ -20,7 +20,7 @@
             overflow-x: hidden;
             position: relative;
         }
-        
+
         body::before {
             content: '';
             position: fixed;
@@ -35,7 +35,7 @@
             pointer-events: none;
             z-index: -1;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -43,15 +43,16 @@
             position: relative;
             z-index: 1;
         }
-        
+
         header {
             text-align: center;
             padding: 40px 0;
             position: relative;
         }
-        
+
         h1 {
-            font-family: 'Dancing Script', cursive;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
             font-size: clamp(2.5rem, 8vw, 5rem);
             background: linear-gradient(45deg, #ff99cc, #ffb3d9, #ff80bf);
             -webkit-background-clip: text;
@@ -61,26 +62,27 @@
             text-shadow: 0 4px 20px rgba(255,182,193,0.4);
             animation: glow 3s ease-in-out infinite alternate;
         }
-        
+
         @keyframes glow {
             from { filter: drop-shadow(0 0 10px rgba(255,182,193,0.5)); }
             to { filter: drop-shadow(0 0 20px rgba(255,182,193,0.8)); }
         }
-        
+
         .subtitle {
             color: #ff80bf;
             font-size: 1.2rem;
             font-weight: 300;
             letter-spacing: 2px;
+            font-family: 'Poppins', sans-serif;
         }
-        
+
         .main-content {
             display: grid;
             grid-template-columns: 1fr 350px;
             gap: 40px;
             margin-top: 40px;
         }
-        
+
         .quotes-section {
             background: rgba(255,255,255,0.6);
             backdrop-filter: blur(20px);
@@ -90,8 +92,9 @@
             box-shadow: 0 20px 60px rgba(255,182,193,0.2);
             position: relative;
             overflow: hidden;
+            font-family: 'Poppins', sans-serif;
         }
-        
+
         .quotes-section::before {
             content: '✦';
             position: absolute;
@@ -101,43 +104,35 @@
             color: #ff80bf;
             opacity: 0.5;
         }
-        
+
         .quote {
-            font-family: 'Dancing Script', cursive;
             font-size: clamp(1.4rem, 4vw, 2.2rem);
             color: #cc6699;
             text-align: center;
             margin-bottom: 40px;
             line-height: 1.4;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1s ease forwards;
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.3s ease;
         }
-        
+
         .quote:last-child {
             margin-bottom: 0;
         }
-        
+
         .quote.author {
             font-size: 1.1rem;
             color: #ff80bf;
             font-weight: 400;
             margin-top: 15px;
         }
-        
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
+
         .sidebar {
             display: flex;
             flex-direction: column;
             gap: 30px;
         }
-        
+
         .widget {
             background: rgba(255,255,255,0.7);
             backdrop-filter: blur(20px);
@@ -146,25 +141,27 @@
             border: 1px solid rgba(255,182,193,0.4);
             box-shadow: 0 15px 40px rgba(255,182,193,0.15);
             transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
         }
-        
+
         .widget:hover {
             transform: translateY(-5px);
             box-shadow: 0 25px 60px rgba(255,182,193,0.25);
         }
-        
+
         .widget h3 {
-            font-family: 'Dancing Script', cursive;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
             font-size: 1.8rem;
             color: #ff80bf;
             margin-bottom: 20px;
             text-align: center;
         }
-        
+
         .study-timer {
             text-align: center;
         }
-        
+
         .timer-display {
             font-size: 3rem;
             font-weight: 600;
@@ -175,7 +172,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        
+
         .timer-btn {
             background: linear-gradient(45deg, #ff80bf, #ffb3d9);
             color: white;
@@ -189,33 +186,33 @@
             margin: 0 10px;
             box-shadow: 0 10px 30px rgba(255,128,191,0.4);
         }
-        
+
         .timer-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 15px 40px rgba(255,128,191,0.6);
         }
-        
+
         .timer-btn:disabled {
             opacity: 0.6;
             cursor: not-allowed;
             transform: none;
         }
-        
+
         .progress-bars {
             margin-top: 20px;
         }
-        
+
         .progress-item {
             margin-bottom: 20px;
         }
-        
+
         .progress-label {
             font-size: 0.9rem;
             color: #cc6699;
             margin-bottom: 8px;
             font-weight: 500;
         }
-        
+
         .progress-bar {
             height: 8px;
             background: rgba(255,182,193,0.3);
@@ -223,7 +220,7 @@
             overflow: hidden;
             position: relative;
         }
-        
+
         .progress-fill {
             height: 100%;
             background: linear-gradient(90deg, #ff80bf, #ffb3d9);
@@ -231,7 +228,7 @@
             transition: width 0.5s ease;
             position: relative;
         }
-        
+
         .progress-fill::after {
             content: '';
             position: absolute;
@@ -242,16 +239,16 @@
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
             animation: shimmer 2s infinite;
         }
-        
+
         @keyframes shimmer {
             0% { transform: translateX(-100%); }
             100% { transform: translateX(100%); }
         }
-        
+
         .daily-goals {
             text-align: center;
         }
-        
+
         .goal-item {
             display: flex;
             align-items: center;
@@ -260,21 +257,23 @@
             background: rgba(255,182,193,0.2);
             border-radius: 15px;
             transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
         }
-        
+
         .goal-item input[type="checkbox"] {
             width: 20px;
             height: 20px;
             margin-right: 15px;
             accent-color: #ff80bf;
             transform: scale(1.2);
+            cursor: pointer;
         }
-        
+
         .goal-item.completed {
             background: rgba(255,128,191,0.3);
             transform: scale(1.02);
         }
-        
+
         .floating-hearts {
             position: fixed;
             top: 0;
@@ -284,7 +283,7 @@
             pointer-events: none;
             z-index: 1000;
         }
-        
+
         .heart {
             position: absolute;
             font-size: 20px;
@@ -292,7 +291,7 @@
             pointer-events: none;
             animation: float 4s ease-out forwards;
         }
-        
+
         @keyframes float {
             0% {
                 opacity: 1;
@@ -307,22 +306,22 @@
                 transform: translateY(-200px) scale(0);
             }
         }
-        
+
         @media (max-width: 768px) {
             .main-content {
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
-            
+
             .quotes-section {
                 padding: 30px 25px;
             }
-            
+
             .sidebar {
                 order: -1;
             }
         }
-        
+
         .motivation-btn {
             position: fixed;
             bottom: 30px;
@@ -339,7 +338,7 @@
             transition: all 0.3s ease;
             z-index: 100;
         }
-        
+
         .motivation-btn:hover {
             transform: translateY(-5px) scale(1.1);
             box-shadow: 0 20px 50px rgba(255,128,191,0.6);
@@ -348,37 +347,18 @@
 </head>
 <body>
     <div class="floating-hearts" id="hearts"></div>
-    
+
     <div class="container">
         <header>
             <h1>Motives</h1>
             <p class="subtitle">sparkle your way to greatness ✨</p>
         </header>
-        
+
         <div class="main-content">
-            <div class="quotes-section">
-                <div class="quote" data-index="0">
-                    "Small steps every day lead to big dreams coming true. 
-                    You've got this, cutie! 💖"
-                    <div class="author">- Your Future Self</div>
-                </div>
-                <div class="quote" data-index="1">
-                    "Your brain grows stronger with every page you read. 
-                    Keep shining bright! 🌟"
-                    <div class="author">- Study Fairy</div>
-                </div>
-                <div class="quote" data-index="2">
-                    "Move your body, feel happy inside. 
-                    30 minutes a day keeps sadness away! 🩷"
-                    <div class="author">- Fitness Bunny</div>
-                </div>
-                <div class="quote" data-index="3">
-                    "Water + sleep + study = unstoppable you! 
-                    You're building your dream life right now! ✨"
-                    <div class="author">- Motivation Muse</div>
-                </div>
+            <div class="quotes-section" id="quotesContainer">
+                <!-- Quotes rendered here by JS -->
             </div>
-            
+
             <div class="sidebar">
                 <div class="widget study-timer">
                     <h3>✨ Study Pomodoro</h3>
@@ -403,40 +383,64 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="widget daily-goals">
                     <h3>🌸 Daily Wins</h3>
-                    <div class="goal-item">
-                        <input type="checkbox" id="goal1" onchange="checkGoal(this)">
-                        <label for="goal1">Read 20 pages 📚</label>
-                    </div>
-                    <div class="goal-item">
-                        <input type="checkbox" id="goal2" onchange="checkGoal(this)">
-                        <label for="goal2">Drink 4 water bottles 💧</label>
-                    </div>
-                    <div class="goal-item">
-                        <input type="checkbox" id="goal3" onchange="checkGoal(this)">
-                        <label for="goal3">Move for 30 mins 🏃‍♀️</label>
-                    </div>
-                    <div class="goal-item">
-                        <input type="checkbox" id="goal4" onchange="checkGoal(this)">
-                        <label for="goal4">Sleep by 10pm 😴</label>
-                    </div>
+                    <div id="dailyGoalsContainer"></div>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <button class="motivation-btn" onclick="newQuote()" title="New Motivation!">💕</button>
 
     <script>
-        // Animate quotes on load
-        document.addEventListener('DOMContentLoaded', () => {
-            const quotes = document.querySelectorAll('.quote');
+        // Animate quotes faded in on render
+        // Quotes and daily goals stored in arrays for easy extension
+        const quotes = [
+            {
+                text: "Small steps every day lead to big dreams coming true. You've got this, cutie! 💖",
+                author: "Your Future Self"
+            },
+            {
+                text: "Your brain grows stronger with every page you read. Keep shining bright! 🌟",
+                author: "Study Fairy"
+            },
+            {
+                text: "Move your body, feel happy inside. 30 minutes a day keeps sadness away! 🩷",
+                author: "Fitness Bunny"
+            },
+            {
+                text: "Water + sleep + study = unstoppable you! You're building your dream life right now! ✨",
+                author: "Motivation Muse"
+            },
+            // Add extra quotes here
+            {
+                text: "Every day is a new chance to sparkle and shine brighter! ✨",
+                author: "Sparkle Guru"
+            },
+            {
+                text: "Believe in your magic and make your dreams real! 💫",
+                author: "Dream Weaver"
+            }
+        ];
+
+        function renderQuotes() {
+            const container = document.getElementById('quotesContainer');
+            container.innerHTML = '';
             quotes.forEach((quote, index) => {
-                quote.style.animationDelay = `${index * 0.3}s`;
+                const quoteDiv = document.createElement('div');
+                quoteDiv.className = 'quote';
+                quoteDiv.dataset.index = index;
+
+                quoteDiv.innerHTML = `
+                    "${quote.text}"
+                    <div class="author">- ${quote.author}</div>
+                `;
+                if(index !== 0) quoteDiv.style.display = 'none'; // show only first initially
+                container.appendChild(quoteDiv);
             });
-        });
+        }
 
         // Timer functionality
         let timerInterval;
@@ -445,7 +449,7 @@
 
         function startTimer(minutes) {
             if (isRunning) return;
-            
+
             timeLeft = minutes * 60;
             isRunning = true;
             document.getElementById('stopBtn').disabled = false;
@@ -470,7 +474,7 @@
         function updateTimerDisplay() {
             const minutes = Math.floor(timeLeft / 60);
             const seconds = timeLeft % 60;
-            document.getElementById('timer').textContent = 
+            document.getElementById('timer').textContent =
                 `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
         }
 
@@ -482,26 +486,71 @@
             document.getElementById('moveProgress').style.width = `${moveProgress}%`;
         }
 
-        // Daily goals
-        function checkGoal(checkbox) {
-            const item = checkbox.parentElement;
-            if (checkbox.checked) {
-                item.classList.add('completed');
-                createHeart();
-            } else {
-                item.classList.remove('completed');
-            }
-            updateProgress();
+        // Daily goals stored in array for easy extension
+        const dailyGoals = [
+            { id: 'goal1', label: 'Read 20 pages 📚', completed: false },
+            { id: 'goal2', label: 'Drink 4 water bottles 💧', completed: false },
+            { id: 'goal3', label: 'Move for 30 mins 🏃‍♀️', completed: false },
+            { id: 'goal4', label: 'Sleep by 10pm 😴', completed: false },
+            // Add more goals here, e.g.:
+            // { id: 'goal5', label: 'Meditate for 10 mins 🧘‍♂️', completed: false }
+        ];
+
+        function renderDailyGoals() {
+            const container = document.getElementById('dailyGoalsContainer');
+            container.innerHTML = '';
+            dailyGoals.forEach(goal => {
+                const div = document.createElement('div');
+                div.className = 'goal-item' + (goal.completed ? ' completed' : '');
+
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.id = goal.id;
+                checkbox.checked = goal.completed;
+                checkbox.addEventListener('change', () => {
+                    goal.completed = checkbox.checked;
+                    if (goal.completed) {
+                        div.classList.add('completed');
+                        createHeart();
+                    } else {
+                        div.classList.remove('completed');
+                    }
+                    updateProgress();
+                });
+
+                const label = document.createElement('label');
+                label.htmlFor = goal.id;
+                label.textContent = goal.label;
+
+                div.appendChild(checkbox);
+                div.appendChild(label);
+                container.appendChild(div);
+            });
         }
 
-        // New random quote
+        // Add new daily goal function (optional)
+        function addDailyGoal(labelText) {
+            const newId = `goal${dailyGoals.length + 1}`;
+            dailyGoals.push({ id: newId, label: labelText, completed: false });
+            renderDailyGoals();
+        }
+
+        // Show a new random quote
         function newQuote() {
-            const quotes = document.querySelectorAll('.quote');
-            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-            randomQuote.style.animation = 'none';
-            setTimeout(() => {
-                randomQuote.style.animation = 'fadeInUp 1s ease forwards';
-            }, 10);
+            const quoteDivs = document.querySelectorAll('.quotes-section .quote');
+            quoteDivs.forEach(div => div.style.display = 'none');
+
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            const chosenQuoteDiv = quoteDivs[randomIndex];
+
+            if (chosenQuoteDiv) {
+                chosenQuoteDiv.style.display = 'block';
+                chosenQuoteDiv.style.animation = 'none';
+                setTimeout(() => {
+                    chosenQuoteDiv.style.animation = 'fadeInUp 1s ease forwards';
+                }, 10);
+            }
+
             createHeart();
         }
 
@@ -512,19 +561,23 @@
             heart.innerHTML = ['💖', '💕', '💗', '✨', '🌸'][Math.floor(Math.random() * 5)];
             heart.style.left = Math.random() * 100 + '%';
             heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
-            
+
             document.getElementById('hearts').appendChild(heart);
-            
+
             setTimeout(() => {
                 heart.remove();
             }, 5000);
         }
 
-        // Update progress periodically
+        // Periodic progress update
         setInterval(updateProgress, 5000);
 
-        // Initial progress
-        updateProgress();
+        // Initialize progress and content on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderQuotes();
+            renderDailyGoals();
+            updateProgress();
+        });
     </script>
 </body>
 </html>
